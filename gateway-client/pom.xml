@@ -19,6 +19,7 @@
         <gateway-common.version>1.0-SNAPSHOT</gateway-common.version>
         <gateway-register-center.version>1.0-SNAPSHOT</gateway-register-center.version>
         <spring-boot-starter-web.version>2.1.7.RELEASE</spring-boot-starter-web.version>
+        <spring-boot-configuration-processor.version>2.0.4.RELEASE</spring-boot-configuration-processor.version>
     </properties>
     <dependencies>
         <!-- 依赖于gateway-common模块 -->
@@ -33,11 +34,17 @@
             <artifactId>gateway-register-center</artifactId>
             <version>${gateway-register-center.version}</version>
         </dependency>
-        <!-- spring boot相关依赖 -->
+        <!-- spring boot的相关依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${spring-boot-starter-web.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <version>${spring-boot-configuration-processor.version}</version>
+            <optional>true</optional>
         </dependency>
 
     </dependencies>

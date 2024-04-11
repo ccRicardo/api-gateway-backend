@@ -1,0 +1,5 @@
+（1）-javaagent:"D:\Tools\SkyWalkingJavaAgent\skywalking-agent\skywalking-agent.jar"
+作用是加载指定路径下的SkyWalking Agent
+具体说明见“关于网关系统中JVM启动参数的一些说明.txt”文件
+（2）-Dskywalking.agent.service_name=backend-http-service
+作用是设置本后台服务在Skywalking中的名称

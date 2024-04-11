@@ -12,6 +12,7 @@
         <module>gateway-common</module>
         <module>gateway-register-center</module>
         <module>gateway-client</module>
+        <module>gateway-http-backend</module>
     </modules>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
