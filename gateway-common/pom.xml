@@ -19,7 +19,6 @@
 
         <redis.clients.version>2.8.0</redis.clients.version>
         <commons-lang3.version>3.7</commons-lang3.version>
-        <jackson.version>2.12.3</jackson.version>
         <commons-beanutils.version>1.9.3</commons-beanutils.version>
     </properties>
     <dependencies>
@@ -34,22 +33,6 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>${commons-lang3.version}</version>
-        </dependency>
-        <!-- jackson相关依赖 -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>${jackson.version}</version>
         </dependency>
         <!-- 操作java bean的工具包-->
         <dependency>

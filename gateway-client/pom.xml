@@ -18,7 +18,7 @@
 
         <gateway-common.version>1.0-SNAPSHOT</gateway-common.version>
         <gateway-register-center.version>1.0-SNAPSHOT</gateway-register-center.version>
-        <spring-boot-starter-web.version>2.1.7.RELEASE</spring-boot-starter-web.version>
+        <spring-boot-starter-web.version>2.6.6</spring-boot-starter-web.version>
         <spring-boot-configuration-processor.version>2.0.4.RELEASE</spring-boot-configuration-processor.version>
     </properties>
     <dependencies>
