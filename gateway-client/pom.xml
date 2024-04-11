@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>api-gateway-backend</artifactId>
+        <groupId>org.wyh</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>gateway-client</artifactId>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <gateway-common.version>1.0-SNAPSHOT</gateway-common.version>
+        <gateway-register-center.version>1.0-SNAPSHOT</gateway-register-center.version>
+        <spring-boot-starter-web.version>2.1.7.RELEASE</spring-boot-starter-web.version>
+    </properties>
+    <dependencies>
+        <!-- 依赖于gateway-common模块 -->
+        <dependency>
+            <groupId>org.wyh</groupId>
+            <artifactId>gateway-common</artifactId>
+            <version>${gateway-common.version}</version>
+        </dependency>
+        <!-- 依赖于gateway-register-center模块 -->
+        <dependency>
+            <groupId>org.wyh</groupId>
+            <artifactId>gateway-register-center</artifactId>
+            <version>${gateway-register-center.version}</version>
+        </dependency>
+        <!-- spring boot相关依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot-starter-web.version}</version>
+        </dependency>
+
+    </dependencies>
+
+</project>

@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="gateway-common" />
         <module name="gateway-register-center" />
+        <module name="gateway-client" />
       </profile>
     </annotationProcessing>
   </component>
