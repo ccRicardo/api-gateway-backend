@@ -40,6 +40,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${spring-boot-starter-web.version}</version>
         </dependency>
+        <!-- 在本系统中，该依赖的主要作用是根据后台服务的application.properties生成对应的ApiProperties bean实例 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
