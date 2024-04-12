@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>api-gateway-backend</artifactId>
-        <groupId>org.wyh</groupId>
+        <groupId>org.wyh.gateway-backend</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -22,7 +22,7 @@
     <dependencies>
         <!-- 依赖于gateway-common模块 -->
         <dependency>
-            <groupId>org.wyh</groupId>
+            <groupId>org.wyh.gateway-backend</groupId>
             <artifactId>gateway-common</artifactId>
             <version>${gateway-common.version}</version>
         </dependency>
