@@ -21,6 +21,7 @@
         <spring-boot-starter-web.version>2.6.6</spring-boot-starter-web.version>
         <jjwt.version>0.6.0</jjwt.version>
         <jaxb-api.version>2.3.0</jaxb-api.version>
+        <spring-boot-maven-plugin.version>2.1.7.RELEASE</spring-boot-maven-plugin.version>
     </properties>
     <dependencies>
         <!-- 依赖于gateway-client模块 -->
@@ -54,4 +55,18 @@
             <version>${jaxb-api.version}</version>
         </dependency>
     </dependencies>
+    <!-- 利用spring-boot-maven-plugin插件将整个spring boot项目打成一个jar包，注意该插件要放到启动模块的pom.xml中 -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot-maven-plugin.version}</version>
+                <configuration>
+                    <mainClass>org.wyh.gateway.backend.http.Application</mainClass>
+                    <addResources>true</addResources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
