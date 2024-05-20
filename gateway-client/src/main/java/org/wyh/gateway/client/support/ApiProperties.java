@@ -13,15 +13,17 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  */
 /*
  * @ConfigurationProperties的作用是将配置文件中的属性值绑定/映射到该Java类的相应字段上。
- * prefix用于指定配置文件中需要绑定/映射属性的前缀名
+ * prefix用于指定配置文件中需要绑定/映射的属性的前缀名
  */
 
-@ConfigurationProperties(prefix="api")
+@ConfigurationProperties(prefix=ApiProperties.API_PREFIX)
 @Data
 public class ApiProperties {
+    //定义配置文件中需要绑定/映射的属性的前缀名
+    public static final String API_PREFIX = "api";
     //注册中心地址
     private String registerAddress;
-    //服务部署环境
+    //注册时使用的命名空间
     private String env = "dev";
     //标识是否为灰度服务
     private boolean gray;
