@@ -19,7 +19,7 @@ import javax.servlet.Servlet;
  * @Author: wyh
  * @Date: 2024-01-30 10:03
  * @Description: 服务接入模块（客户端）的自动配置类，
-                 主要用途是根据应用的配置文件，注册ApiProperties和相应注册管理器的bean实例。
+                 主要用途是将配置文件中的相应属性映射到配置类的bean实例上，并根据配置信息创建相应的注册管理器bean实例。
                  注意：在实际使用中，客户端模块会被作为外部jar包引入到spring boot应用中。
                  该类启用了spring boot的自动装配机制（在文件resources/META-INF/spring.factories中开启）
                  SpringBoot应用的@SpringBootApplication会开启自动配置
@@ -31,8 +31,8 @@ import javax.servlet.Servlet;
  */
 /*
  * @Configuration用于标识配置类。配置类中的@Bean方法可以将返回对象注册为一个bean实例。
- * @EnableConfigurationProperties的作用是使@ConfigurationProperties注解的类生效，
- * 将spring boot配置文件中带有指定前缀的属性值绑定到类上的相应字段，并将其实例注册spring ioc中。
+ * @EnableConfigurationProperties的作用是使指定的（@ConfigurationProperties注解的）配置类生效，即：
+ * 注册指定配置类的bean实例，并将spring boot配置文件中带有指定前缀的属性值绑定到该bean实例的相应字段上。
  * @ConditionalOnProperty的作用是控制配置类是否生效，或者控制某个bean是否被创建
  * 例如，下面这句代码的意思就是：只有当配置文件中存在名为api.registerAddress的属性,并且不为null时，该配置类才会生效
  */
