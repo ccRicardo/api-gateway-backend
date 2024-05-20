@@ -28,15 +28,13 @@ public class AbstractServiceInvoker implements ServiceInvoker{
     }
 
     @Override
-    public void setRuleId(String ruleId) {
+    public void setRuleId(String ruleId){
         this.ruleId = ruleId;
     }
-
     @Override
-    public String getRuleId() {
+    public String getRuleId(){
         return this.ruleId;
     }
-
 
     @Override
     public void setTimeout(int timeout) {

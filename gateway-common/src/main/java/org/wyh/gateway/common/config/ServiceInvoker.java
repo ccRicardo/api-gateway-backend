@@ -5,7 +5,7 @@ package org.wyh.gateway.common.config;
  * @BelongsPackage: org.wyh.common.config
  * @Author: wyh
  * @Date: 2024-01-17 14:24
- * @Description: 服务方法调用的接口定义
+ * @Description: 服务方法（调用）的接口定义
                  方法调用指的是服务向外暴露/提供的可调用方法
  */
 
@@ -24,14 +24,14 @@ public interface ServiceInvoker {
      */
     String getInvokerPath();
     /**
-     * @date: 2024-05-20 9:56
+     * @date: 2024-05-13 9:56
      * @description: 设置该方法调用绑定的规则id（一个服务可以有多个方法，每个方法都可以绑定不同的规则）
      * @Param ruleId:
      * @return: void
      */
     void setRuleId(String ruleId);
     /**
-     * @date: 2024-05-20 9:53
+     * @date: 2024-05-13 9:57
      * @description: 获取该方法调用绑定的规则id
      * @return: java.lang.String
      */

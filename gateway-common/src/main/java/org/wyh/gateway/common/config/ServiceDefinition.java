@@ -13,7 +13,7 @@ import java.util.Objects;
  * @BelongsPackage: org.wyh.common.config
  * @Author: wyh
  * @Date: 2024-01-17 13:49
- * @Description: 服务定义类（下游服务都需要注册到注册中心）
+ * @Description: 服务定义类，用于描述服务的信息（下游服务都需要注册到注册中心）
                  “@Builder”注解的作用是实现建造者模式
  */
 @Setter
@@ -28,9 +28,8 @@ public class ServiceDefinition implements Serializable {
     //服务版本号
     private String version;
     //服务采用的具体协议（也就是RPC采用的具体协议），例如http(mvc http), dubbo等
-    // TODO: 2024-04-01 目前尚未使用该属性，计划在发送请求前进行一次路径匹配 
     private String protocol;
-    //服务的路径匹配规则，是一个ANT风格的表达式
+    //服务的匹配规则，是一个ANT风格的表达式（正则匹配的效率太低，所以使用ANT）
     private String patternPath;
     //环境类型，例如开发环境，测试环境等
     private String envType;
@@ -74,14 +73,6 @@ public class ServiceDefinition implements Serializable {
         this.enable = enable;
         this.desc = desc;
         this.invokerMap = invokerMap;
-    }
-    /**
-     * @date: 2024-01-17 14:32
-     * @description: 判断服务是否启用
-     * @return: boolean
-     */
-    public boolean isEnable() {
-        return enable;
     }
     @Override
     public boolean equals(Object o) {

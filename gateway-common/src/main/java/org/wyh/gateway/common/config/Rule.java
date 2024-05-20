@@ -5,7 +5,6 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -15,7 +14,9 @@ import java.util.Set;
  * @Author: wyh
  * @Date: 2024-01-08 9:49
  * @Description: 可插拔式过滤规则定义类（可插拔主要体现为按需取用）
-                 由于规则匹配时需要比较规则优先级，所以需要实现Comparable<Rule>接口
+                 规则实际上就是描述了某一服务或路径需要使用哪些过滤组件，组件的执行顺序以及各组件的配置参数等。
+                 由于一条路径可以绑定多个规则，而最终应用时需要进行优先级比较来选择一个具体规则，
+                 所以该规则类需要实现Comparable<Rule>接口
 
  */
 @Setter
@@ -29,22 +30,15 @@ public class Rule implements Comparable<Rule>, Serializable{
     private String name;
     //规则对应的协议
     private String protocol;
-    //规则优先级。应用场景为一条路径对应多条规则时。
+    //规则优先级。一条路径可以绑定多个规则，而最终应用时需要进行优先级比较来选择一个具体规则。优先级数字越小，执行的顺序越靠前。
     private Integer order;
-    //规则对应的后端服务id。通常来说，一个后端服务可以对应多个规则。
-    private String serviceId;
-    //规则对应的请求前缀。todo 该属性的作用目前还不大明白，猜测是用来标识要请求的后端服务的类别。
-    private String prefix;
-    //规则绑定的路径集合。通常来说，一个规则可以绑定多条请求路径。
-    private List<String> paths;
-    //过滤器配置集合（也就是一条过滤器链）。
+    //规则的过滤器配置集合（其实就是在定义一条过滤器链）。
     private Set<FilterConfig> filterConfigs = new HashSet<>();
-    //限流配置集合
-    private Set<FlowCtrlConfig> flowCtrlConfigs = new HashSet<>();
-    //熔断配置集合
+    //规则的熔断配置集合
     private Set<HystrixConfig> hystrixConfigs = new HashSet<>();
-    //请求重试的配置信息
+    //规则的请求重试配置信息
     private RetryConfig retryConfig = new RetryConfig();
+
     /**
      * @date: 2024-01-11 14:04
      * @description: 无参构造器
@@ -64,7 +58,7 @@ public class Rule implements Comparable<Rule>, Serializable{
     public static class FilterConfig{
         //过滤器的id
         private String filterId;
-        //该过滤器的配置信息
+        //该过滤器的配置信息，通常是一个json串
         private String Config;
 
         @Override
@@ -108,26 +102,7 @@ public class Rule implements Comparable<Rule>, Serializable{
     public static class RetryConfig{
         //请求重试的次数
         private int times;
-        // TODO: 2024-02-26 还可以考虑添加更多的属性 
-    }
-    /**
-     * @BelongsProject: my-api-gateway
-     * @BelongsPackage: org.wyh.common.config
-     * @Author: wyh
-     * @Date: 2024-02-27 10:19
-     * @Description: 内部类，用于定义流量控制的配置信息
-     */
-    @Setter
-    @Getter
-    public static class FlowCtrlConfig{
-        //限流的类型，可以是路径，服务id或者ip
-        private String type;
-        //限流的对象（值）
-        private String value;
-        //限流的模式，单机或分布式
-        private String mode;
-        //限流的规则配置，以json串的形式给出
-        private String config;
+        // TODO: 2024-05-17 感觉重试这个机制可以去掉
     }
     /**
      * @BelongsProject: my-api-gateway
@@ -173,11 +148,11 @@ public class Rule implements Comparable<Rule>, Serializable{
     }
     /**
      * @date: 2024-01-11 14:53
-     * @description: 判断filterId指定的过滤器配置是否存在
+     * @description: 检查给定filterId对应的过滤器组件是否存在/启用
      * @Param filterId:
      * @return: boolean
      */
-    public boolean checkConfigExists(String filterId){
+    public boolean checkFilterExist(String filterId){
         for (FilterConfig filterConfig : filterConfigs) {
             if(filterConfig.getFilterId().equalsIgnoreCase(filterId)){
                 return true;
@@ -225,11 +200,7 @@ public class Rule implements Comparable<Rule>, Serializable{
                 ", name='" + name + '\'' +
                 ", protocol='" + protocol + '\'' +
                 ", order=" + order +
-                ", serviceId='" + serviceId + '\'' +
-                ", prefix='" + prefix + '\'' +
-                ", paths=" + paths +
                 ", filterConfigs=" + filterConfigs +
-                ", flowCtrlConfigs=" + flowCtrlConfigs +
                 ", hystrixConfigs=" + hystrixConfigs +
                 ", retryConfig=" + retryConfig +
                 '}';
