@@ -23,7 +23,7 @@ public class ApiProperties {
     public static final String API_PREFIX = "api";
     //注册中心地址
     private String registerAddress;
-    //注册时使用的命名空间
+    //服务部署的环境类型
     private String env = "dev";
     //标识是否为灰度服务
     private boolean gray = false;

@@ -14,7 +14,7 @@ import java.util.ServiceLoader;
  * @BelongsPackage: org.wyh.gateway.client.core
  * @Author: wyh
  * @Date: 2024-01-26 14:23
- * @Description: 注册管理抽象类，用于实现后台服务的自动化注册。
+ * @Description: 注册管理抽象类，用于初始化注册中心实例，并提供doRegister方法来真正完成服务注册。
                  注意：在实际使用中，客户端模块会被作为外部jar包引入到spring boot应用中。
  */
 @Slf4j
@@ -51,12 +51,12 @@ public abstract class AbstractClientRegisterManager {
     }
     /**
      * @date: 2024-01-26 15:10
-     * @description: 调用注册中心实例的注册方法，完成注册
+     * @description: 调用注册中心实例的注册方法，真正完成注册
      * @Param serviceDefinition:
      * @Param serviceInstance:
      * @return: void
      */
-    protected void register(ServiceDefinition serviceDefinition, ServiceInstance serviceInstance){
+    protected void doRegister(ServiceDefinition serviceDefinition, ServiceInstance serviceInstance){
         registerCenter.register(serviceDefinition, serviceInstance);
     }
 }
