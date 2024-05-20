@@ -26,5 +26,5 @@ public class ApiProperties {
     //注册时使用的命名空间
     private String env = "dev";
     //标识是否为灰度服务
-    private boolean gray;
+    private boolean gray = false;
 }

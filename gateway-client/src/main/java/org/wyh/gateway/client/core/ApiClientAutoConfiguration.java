@@ -38,7 +38,7 @@ import javax.servlet.Servlet;
  */
 @Configuration
 @EnableConfigurationProperties(ApiProperties.class)
-@ConditionalOnProperty(prefix = "api", name = {"registerAddress"})
+@ConditionalOnProperty(prefix = ApiProperties.API_PREFIX, name = {"registerAddress"})
 public class ApiClientAutoConfiguration {
     //服务配置实例。@EnableConfigurationProperties注解已经将该类实例注册到了spring ioc中。
     @Autowired
