@@ -20,7 +20,7 @@ public @interface ApiService {
     String version() default "1.0.0";
     //服务使用的协议
     ApiProtocol protocol();
-    //服务的路径匹配规则
+    //服务的（ANT风格的）匹配规则
     String patternPath();
     //服务的描述信息（自己添加的字段）
     String desc();

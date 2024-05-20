@@ -18,4 +18,6 @@ public @interface ApiInvoker {
     String path();
     //方法的描述信息（自己定义的字段）
     String desc();
+    //方法调用的超时时间
+    int timeout() default 5000;
 }

@@ -51,11 +51,11 @@ public class ApiAnnotationScanner {
      * @date: 2024-01-25 15:56
      * @description: 扫描传入的服务对象，返回相应的服务定义
      * @Param bean: 服务对应的bean对象
-     * @Param args: 可变参数，用于扫描dubbo服务时提供ServiceBean对象
+     * @Param args:
      * @return: org.wyh.common.config.ServiceDefinition
      */
     public ServiceDefinition scanner(Object bean, Object... args){
-        //获取服务bean的class对象
+        //获取服务bean类型的class对象
         Class<?> aClass = bean.getClass();
         //如果该类上没有@ApiService注解，则说明它不是一个需要注册的服务
         if (!aClass.isAnnotationPresent(ApiService.class)) {
@@ -77,17 +77,15 @@ public class ApiAnnotationScanner {
             //构造服务的方法调用集合Map<String, ServiceInvoker>
             for(Method method : methods){
                 //如果该方法上没有@ApiInvoker对象，则说明它不是一个向外暴露的方法
-                ApiInvoker apiInvoker = method.getAnnotation(ApiInvoker.class);
-                if(apiInvoker == null){
+                ApiInvoker invokerAnnotation = method.getAnnotation(ApiInvoker.class);
+                if(invokerAnnotation == null){
                     continue;
                 }
-                String path = apiInvoker.path();
-                String methodDesc = apiInvoker.desc();
+                String path = invokerAnnotation.path();
                 //根据服务采用的具体协议，构造对应的ServiceInvoker对象。
                 switch (protocol) {
                     case HTTP:
-                        HttpServiceInvoker httpServiceInvoker = createHttpServiceInvoker(path);
-                        httpServiceInvoker.setDesc(methodDesc);
+                        HttpServiceInvoker httpServiceInvoker = createHttpServiceInvoker(invokerAnnotation);
                         invokerMap.put(path, httpServiceInvoker);
                         break;
                     default:
@@ -113,12 +111,14 @@ public class ApiAnnotationScanner {
     /**
      * @date: 2024-01-25 15:09
      * @description: 构建HttpServiceInvoker对象
-     * @Param path: http服务方法调用的路径
+     * @Param invokerAnnotation:
      * @return: org.wyh.common.config.HttpServiceInvoker
      */
-    private HttpServiceInvoker createHttpServiceInvoker(String path){
+    private HttpServiceInvoker createHttpServiceInvoker(ApiInvoker invokerAnnotation){
         HttpServiceInvoker httpServiceInvoker = new HttpServiceInvoker();
-        httpServiceInvoker.setInvokerPath(path);
+        httpServiceInvoker.setInvokerPath(invokerAnnotation.path());
+        httpServiceInvoker.setTimeout(invokerAnnotation.timeout());
+        httpServiceInvoker.setDesc(invokerAnnotation.desc());
         return httpServiceInvoker;
     }
 }
