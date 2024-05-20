@@ -11,6 +11,8 @@ package org.wyh.gateway.common.config;
 public class AbstractServiceInvoker implements ServiceInvoker{
     //方法调用全路径
     protected String invokerPath;
+    //方法调用绑定的规则id
+    protected String ruleId;
     //方法调用的超时时间
     protected int timeout = 5000;
     //方法的描述信息
@@ -24,6 +26,17 @@ public class AbstractServiceInvoker implements ServiceInvoker{
     public String getInvokerPath() {
         return this.invokerPath;
     }
+
+    @Override
+    public void setRuleId(String ruleId) {
+        this.ruleId = ruleId;
+    }
+
+    @Override
+    public String getRuleId() {
+        return this.ruleId;
+    }
+
 
     @Override
     public void setTimeout(int timeout) {

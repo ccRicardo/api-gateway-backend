@@ -24,6 +24,19 @@ public interface ServiceInvoker {
      */
     String getInvokerPath();
     /**
+     * @date: 2024-05-20 9:56
+     * @description: 设置该方法调用绑定的规则id（一个服务可以有多个方法，每个方法都可以绑定不同的规则）
+     * @Param ruleId:
+     * @return: void
+     */
+    void setRuleId(String ruleId);
+    /**
+     * @date: 2024-05-20 9:53
+     * @description: 获取该方法调用绑定的规则id
+     * @return: java.lang.String
+     */
+    String getRuleId();
+    /**
      * @date: 2024-01-17 14:57
      * @description: 设置该方法调用的超时时间
      * @Param timeout:
