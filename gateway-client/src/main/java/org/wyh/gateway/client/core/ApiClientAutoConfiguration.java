@@ -24,7 +24,7 @@ import javax.servlet.Servlet;
                  该类启用了spring boot的自动装配机制（在文件resources/META-INF/spring.factories中开启）
                  SpringBoot应用的@SpringBootApplication会开启自动配置
                  然后扫描外部引用jar包中的META-INF/spring.factories文件，
-                 将其中配置的类注册到spring ioc中，并调用其中的@Bean方法，实例化相应的bean
+                 将其中配置的类注册到spring ioc中，然后注册配置类的bean实例，最后调用@Bean方法，实例化注册管理器的bean对象
                  本类中使用了条件注解，进而能够根据应用使用的协议，来实例化相应的注册管理器bean
                  当发生相应事件时，注册管理器bean的onApplicationEvent会被调用，从而完成服务的自动注册
 
