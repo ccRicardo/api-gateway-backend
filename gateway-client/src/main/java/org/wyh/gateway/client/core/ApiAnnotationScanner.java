@@ -92,7 +92,7 @@ public class ApiAnnotationScanner {
                         break;
                 }
             }
-            //设置服务定义的相关信息
+            //设置服务定义的相关信息（此处未设置envType属性）
             serviceDefinition.setUniqueId(serviceId + BasicConst.COLON_SEPARATOR + version);
             serviceDefinition.setServiceId(serviceId);
             serviceDefinition.setVersion(version);
