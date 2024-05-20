@@ -40,14 +40,14 @@ import javax.servlet.Servlet;
 @EnableConfigurationProperties(ApiProperties.class)
 @ConditionalOnProperty(prefix = ApiProperties.API_PREFIX, name = {"registerAddress"})
 public class ApiClientAutoConfiguration {
-    //服务配置实例。@EnableConfigurationProperties注解已经将该类实例注册到了spring ioc中。
+    //服务配置类实例。@EnableConfigurationProperties注解已经将该类实例注册到了spring ioc中。
     @Autowired
     private ApiProperties apiProperties;
     /*
      * @ConditionalOnClass和@ConditionalOnMissingBean都是条件注解
      * @ConditionalOnClass的作用是根据指定的类是否（在类路径中）存在，来决定是否加载该bean
      * @ConditionalOnMissingBean的作用是，当spring ioc中不存在指定类型的bean时，该类的bean才会注册
-     * 具体来说，该注解一般用于确保spring ioc中只有一个该类型的bean实例。
+     * 具体来说，该注解一般用于确保指定类型在spring ioc中只有一个bean实例。
      */
 
     /**
