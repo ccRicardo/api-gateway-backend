@@ -20,7 +20,7 @@ import java.util.ServiceLoader;
 @Slf4j
 @Getter
 public abstract class AbstractClientRegisterManager {
-    //服务配置对象，主要包含注册中心地址和服务部署环境信息
+    //服务配置类对象，主要包含注册中心地址和服务部署环境信息
     private ApiProperties apiProperties;
     //注册中心实例
     private RegisterCenter registerCenter;
@@ -44,7 +44,7 @@ public abstract class AbstractClientRegisterManager {
         ServiceLoader<RegisterCenter> serviceLoader = ServiceLoader.load(RegisterCenter.class);
         registerCenter = serviceLoader.findFirst().orElseThrow(()->{
             //如果没找到实现类，则执行以下lambda表达式，抛出异常
-            log.error("【服务接入模块】未发现注册中心实例");
+            log.error("未发现注册中心实例");
             return new RuntimeException("未发现注册中心实例");
         });
         registerCenter.init(apiProperties.getRegisterAddress(), apiProperties.getEnv());
