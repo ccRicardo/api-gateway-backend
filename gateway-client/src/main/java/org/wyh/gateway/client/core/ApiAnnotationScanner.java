@@ -114,6 +114,7 @@ public class ApiAnnotationScanner {
      * @return: org.wyh.common.config.HttpServiceInvoker
      */
     private HttpServiceInvoker createHttpServiceInvoker(ApiInvoker invokerAnnotation){
+        // TODO: 2024-05-20 目前还未设置invoker的ruleId属性 
         //设置服务方法调用的相关属性（此处未设置ruleId属性）
         HttpServiceInvoker httpServiceInvoker = new HttpServiceInvoker();
         httpServiceInvoker.setInvokerPath(invokerAnnotation.path());
