@@ -16,6 +16,8 @@ import java.lang.annotation.*;
 public @interface ApiInvoker {
     //方法调用的路径
     String path();
+    //方法调用使用的规则id
+    String ruleId();
     //方法的描述信息（自己定义的字段）
     String desc();
     //方法调用的超时时间

@@ -136,6 +136,7 @@ public class HttpClientRegisterManager extends AbstractClientRegisterManager
                 serviceInstance.setPort(port);
                 serviceInstance.setRegisterTime(TimeUtil.currentTimeMillis());
                 serviceInstance.setVersion(version);
+                // TODO: 2024-05-22 这里将所有的服务定义都设为默认值，是否不合理。是否可以在注解中添加权重信息。 
                 serviceInstance.setWeight(GatewayConst.DEFAULT_WEIGHT);
                 //根据api的配置信息判断是否为灰度服务，然后设置服务实例的gray属性
                 if(getApiProperties().isGray()){
