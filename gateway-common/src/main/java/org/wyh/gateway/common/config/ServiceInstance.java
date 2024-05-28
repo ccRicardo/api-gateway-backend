@@ -27,16 +27,18 @@ public class ServiceInstance implements Serializable {
     protected int port;
     //标签信息
     protected String tags;
-    //权重信息（负载均衡时可能用到）
+    //权重信息（负载均衡时要用到）
     protected Integer weight;
-    //服务注册时间
+    //服务实例的预热时间，单位为ms，默认为3分钟（负载均衡时要用到）
+    protected Integer warmUpTime = 3 * 60 * 1000;
+    //服务实例注册时间
     protected long registerTime;
-    //服务实例启用/禁用
+    //服务实例启用/禁用，默认为启用
     protected boolean enable = true;
     //服务实例的版本号
     protected String version;
-    //标识是否为灰度服务实例
-    protected boolean gray;
+    //标识是否为灰度服务实例，默认为false
+    protected boolean gray = false;
     /**
      * @date: 2024-01-22 14:23
      * @description: 无参构造器
@@ -83,6 +85,7 @@ public class ServiceInstance implements Serializable {
                 ", port=" + port +
                 ", tags='" + tags + '\'' +
                 ", weight=" + weight +
+                ", warmUpTime=" + warmUpTime +
                 ", registerTime=" + registerTime +
                 ", enable=" + enable +
                 ", version='" + version + '\'' +
