@@ -27,4 +27,8 @@ public class ApiProperties {
     private String env = "dev";
     //标识是否为灰度服务
     private boolean gray = false;
+    //服务器的权重
+    private int weight = 100;
+    //服务器的预热时间
+    private int warmUpTime = 3 * 60 * 1000;
 }

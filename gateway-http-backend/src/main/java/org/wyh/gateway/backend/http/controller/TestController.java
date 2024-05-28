@@ -35,7 +35,7 @@ public class TestController {
      * @description: http服务，用于测试网关系统的绝大部分功能
      * @return: java.lang.String
      */
-    @ApiInvoker(path="/http-service/test", desc="test-invoker")
+    @ApiInvoker(path="/http-service/test", ruleId="1")
     @GetMapping("/http-service/test")
     public String test() throws InterruptedException{
         log.info("{}", apiProperties);
@@ -50,7 +50,7 @@ public class TestController {
      * @Param response: 响应对象
      * @return: java.lang.String
      */
-    @ApiInvoker(path="/http-service/login", desc="login-invoker")
+    @ApiInvoker(path="/http-service/login", ruleId="2")
     @GetMapping("/http-service/login")
     public String login(@RequestParam("phoneNumber") String phoneNumber,
                         @RequestParam("code") String code,
@@ -77,7 +77,7 @@ public class TestController {
      * @Param userId:
      * @return: java.lang.String
      */
-    @ApiInvoker(path="/http-service/user", desc="user-invoker")
+    @ApiInvoker(path="/http-service/user", ruleId="2")
     @GetMapping("/http-service/user")
     public String getUserInfo(@RequestHeader("userId") String userId){
         return "userId: " + userId;
