@@ -2,6 +2,8 @@ package org.wyh.gateway.client.support;
 
 import java.lang.annotation.*;
 
+import static org.wyh.gateway.client.support.ApiProtocol.HTTP;
+
 /**
  * @BelongsProject: my-api-gateway
  * @BelongsPackage: org.wyh.gateway.client.core
@@ -19,9 +21,9 @@ public @interface ApiService {
     //服务版本号
     String version() default "1.0.0";
     //服务使用的协议
-    ApiProtocol protocol();
+    ApiProtocol protocol() default HTTP;
     //服务的（ANT风格的）匹配规则
     String patternPath();
     //服务的描述信息（自己添加的字段）
-    String desc();
+    String desc() default "";
 }
