@@ -19,7 +19,7 @@ public @interface ApiInvoker {
     //方法调用使用的规则id
     String ruleId();
     //方法的描述信息（自己定义的字段）
-    String desc() default "";
+    String desc() default " ";
     //方法调用的超时时间
     int timeout() default 5000;
 }

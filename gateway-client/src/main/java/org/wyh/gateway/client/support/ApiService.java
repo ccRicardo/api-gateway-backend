@@ -25,5 +25,5 @@ public @interface ApiService {
     //服务的（ANT风格的）匹配规则
     String patternPath();
     //服务的描述信息（自己添加的字段）
-    String desc() default "";
+    String desc() default " ";
 }

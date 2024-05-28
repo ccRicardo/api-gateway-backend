@@ -26,7 +26,7 @@ import java.util.Date;
  */
 @Slf4j
 @RestController
-@ApiService(serviceId = "http-service", protocol = ApiProtocol.HTTP, patternPath = "/http-service/**", desc = "test-service")
+@ApiService(serviceId = "http-service", protocol = ApiProtocol.HTTP, patternPath = "/http-service/**", desc="test")
 public class TestController {
     @Autowired
     private ApiProperties apiProperties;
@@ -35,10 +35,9 @@ public class TestController {
      * @description: http服务，用于测试网关系统的绝大部分功能
      * @return: java.lang.String
      */
-    @ApiInvoker(path="/http-service/test", ruleId="1")
+    @ApiInvoker(path="/http-service/test", desc="test-svc", ruleId="1")
     @GetMapping("/http-service/test")
     public String test() throws InterruptedException{
-        log.info("{}", apiProperties);
         //Thread.sleep(1000);
         return "this is normal test http service";
     }
@@ -50,7 +49,7 @@ public class TestController {
      * @Param response: 响应对象
      * @return: java.lang.String
      */
-    @ApiInvoker(path="/http-service/login", ruleId="2")
+    @ApiInvoker(path="/http-service/login", desc="login-svc", ruleId="2")
     @GetMapping("/http-service/login")
     public String login(@RequestParam("phoneNumber") String phoneNumber,
                         @RequestParam("code") String code,
@@ -77,7 +76,7 @@ public class TestController {
      * @Param userId:
      * @return: java.lang.String
      */
-    @ApiInvoker(path="/http-service/user", ruleId="2")
+    @ApiInvoker(path="/http-service/user", desc="user-svc", ruleId="2")
     @GetMapping("/http-service/user")
     public String getUserInfo(@RequestHeader("userId") String userId){
         return "userId: " + userId;
