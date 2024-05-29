@@ -32,7 +32,8 @@ public class TestController {
     private ApiProperties apiProperties;
     /**
      * @date: 2024-03-12 9:27
-     * @description: http服务，用于测试网关系统的绝大部分功能
+     * @description: http标准测试服务，用于测试网关系统的绝大部分功能
+                     注意：请求头中必须带有uniqueId，下同
      * @return: java.lang.String
      */
     @ApiInvoker(path="/http-service/test", desc="test-svc", ruleId="1")
@@ -44,6 +45,8 @@ public class TestController {
     /**
      * @date: 2024-03-12 9:32
      * @description: http登录服务，用于测试网关系统的用户鉴权功能
+                     注意：请求参数中必须带有phoneNumber和code
+                     该服务的响应结果中会包含user-jwt cookie
      * @Param phoneNumber:
      * @Param code:
      * @Param response: 响应对象
@@ -73,10 +76,11 @@ public class TestController {
     /**
      * @date: 2024-03-12 9:58
      * @description: http用户服务，配合上述的http登录服务，测试网关系统的用户鉴权功能
+                     注意：请求中必须带有user-jwt cookie
      * @Param userId:
      * @return: java.lang.String
      */
-    @ApiInvoker(path="/http-service/user", desc="user-svc", ruleId="2")
+    @ApiInvoker(path="/http-service/user", desc="user-svc", ruleId="3")
     @GetMapping("/http-service/user")
     public String getUserInfo(@RequestHeader("userId") String userId){
         return "userId: " + userId;
