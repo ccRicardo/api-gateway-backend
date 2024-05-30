@@ -54,7 +54,7 @@ public class Rule implements Comparable<Rule>, Serializable{
         //过滤器的id
         private String filterId;
         //该过滤器的配置信息，通常是一个json串
-        private String Config;
+        private String config;
 
         @Override
         public int hashCode() {
@@ -81,7 +81,7 @@ public class Rule implements Comparable<Rule>, Serializable{
         public String toString() {
             return "FilterConfig{" +
                     "filterId='" + filterId + '\'' +
-                    ", Config='" + Config + '\'' +
+                    ", Config='" + config + '\'' +
                     '}';
         }
     }
