@@ -39,7 +39,7 @@ public class TestController {
     @ApiInvoker(path="/http-service/test", desc="test-svc", ruleId="1")
     @GetMapping("/http-service/test")
     public String test() throws InterruptedException{
-        Thread.sleep(200);
+        Thread.sleep(150);
 //        Thread.sleep(4000);
         return "this is normal test http service";
     }
