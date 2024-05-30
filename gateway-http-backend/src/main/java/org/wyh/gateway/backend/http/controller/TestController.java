@@ -40,6 +40,7 @@ public class TestController {
     @GetMapping("/http-service/test")
     public String test() throws InterruptedException{
         Thread.sleep(200);
+//        Thread.sleep(4000);
         return "this is normal test http service";
     }
     /**
